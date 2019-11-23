@@ -1,0 +1,33 @@
+<div class="dialog">
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+  <mat-select  [(ngModel)]="this.data.trip.plane" [compareWith]="comparePlan" placeholder="Самолеты">
+    <mat-option *ngFor="let plane of planes" [value]="plane">
+      {{plane.plane_name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  <mat-form-field>
+  <mat-select  [(ngModel)]="this.data.trip.flight" [compareWith]="compareFlight" placeholder="Рейсы">
+    <mat-option *ngFor="let flight of flights" [value]="flight">
+      {{flight.flight_name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  <mat-form-field>
+    <label>
+      <input matInput [(ngModel)]="data.trip.trip_date" placeholder="Дата Вылета">
+    </label>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions align="center">
+  <button  mat-raised-button color="primary" (click)="onNoClick()">Отменить</button>
+  <button class="mat-raised-button" mat-button (click)="onYesClick()" [mat-dialog-close]="{name: data.trip}" cdkFocusInitial>
+    Сохранить
+  </button>
+</div>
+</div>

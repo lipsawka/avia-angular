@@ -1,0 +1,51 @@
+<div class="tableDiv" align="center">
+  <table class="mat-table" mat-table [dataSource]="datasource" matSort>
+    <ng-container matColumnDef="flight_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Наименование рейса</mat-header-cell>
+      <mat-cell *matCellDef="let flight">{{flight.flight_name}}</mat-cell>
+    </ng-container>
+   	<ng-container matColumnDef="flight_town_start">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Откуда</mat-header-cell>
+      <mat-cell *matCellDef="let flight">{{flight.flight_town_start}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="flight_town_finish">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Куда</mat-header-cell>
+      <mat-cell *matCellDef="let flight">{{flight.flight_town_finish}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="flight_price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Цена</mat-header-cell>
+      <mat-cell *matCellDef="let flight">{{flight.flight_price}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="flight_time_start">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Время вылета</mat-header-cell>
+      <mat-cell *matCellDef="let flight">{{flight.flight_time_start}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="flight_time_finish">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Время прилета</mat-header-cell>
+      <mat-cell *matCellDef="let flight">{{flight.flight_time_finish}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="flight_time_travel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Время в пути</mat-header-cell>
+      <mat-cell *matCellDef="let flight">{{flight.flight_time_travel}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Действия</mat-header-cell>
+      <mat-cell *matCellDef="let flight">
+        <button  mat-raised-button color="warn" (click)="onClickDelete(flight)">Удалить</button>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions2">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let flight">
+        <button  mat-raised-button color="primary" (click)="onClickUpdate(flight)">Изменить</button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
+  </table>
+  <div class="footer">
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <button mat-raised-button (click)="openDialog()">Добавить</button>
+</div>
